@@ -36,7 +36,7 @@ app.use(passport.session());
 passport.use(new GoogleStrategy({
     clientID: process.env.GOOGLE_CLIENT_ID,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    callbackURL: "http://localhost:3000/auth/google/home",
+    callbackURL: "http://https://damp-eyrie-74283.herokuapp.com/auth/google/home",
     userProfileUrl: "http:www.googleapis.come/oauth2/v3/userinfo"
   },
   function(accessToken, refreshToken, profile, cb) {
@@ -51,7 +51,7 @@ passport.use(new GoogleStrategy({
 passport.use(new FacebookStrategy({
     clientID: process.env.FACEBOOK_APP_ID,
     clientSecret: process.env.FACEBOOK_APP_SECRET,
-    callbackURL: "http://localhost:3000/auth/facebook/home"
+    callbackURL: "http://https://damp-eyrie-74283.herokuapp.com/auth/facebook/home"
   },
   function(accessToken, refreshToken, profile, cb) {
     User.findOrCreate({
@@ -271,6 +271,6 @@ app.get("/posts/:postName/:postId", function(req, res) {
 
 let port = process.env.PORT;
 if (port == null || port == "") {
-  port = 8000;
+  port = 3000;
 }
 app.listen(port);
