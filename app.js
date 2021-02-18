@@ -132,8 +132,6 @@ app.get("/", function(req, res) {
   res.render("landing")
 });
 
-
-
 app.get("/register", function(req, res) {
   res.render("register");
 });
@@ -172,10 +170,7 @@ app.post("/login", function(req, res) {
       passport.authenticate("local")(req, res, function() {
         Post.find({}, function(err, foundPosts) {
           if (!err) {
-            res.render("home", {
-              startingContent: homeStartingContent,
-              posts: foundPosts
-            });
+            res.redirect("/home");
           } else {
             console.log(err);
           }
